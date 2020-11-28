@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+    <head>
+    <!-- basic.html -->
+    <title>Address Book</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset = "UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/7e22cccb49.js" crossorigin="anonymous"></script>
+    <script src="script.js" type = "text/javascript" ></script>
+    </head>
+    <body>
+        <div class="body-blackout"></div>
+        <header>
+            <div class = "container topbar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input placeholder="Search..." type="search" name="search_contacts">
+                    
+                </div>
+                <div>
+                    <button id="addcontact" class="trigger_button" >Add Contact</button>
+                    <div class="popup-modal shadow">
+                        <i class="fas fa-times popup-modal__close"></i>
+                        <h2 class="font-weight-bold">
+                            Add A Contact
+                        </h2>
+                        <form>
+                            <div class="input-container" id="name">
+                                <i class="fas fa-user-tie"></i>
+                                <input type="text" name="fullName" placeholder="Full Name">
+                            </div>
+                            <div class="input-container" id="email">
+                                <i class="fas fa-envelope"></i>
+                                <input type="text" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="input-container" id="phone">
+                                <i class="fas fa-phone-alt"></i>
+                                <input type="text" name="phone" placeholder="Phone Number">
+                            </div>
+                            <div class="input-container" id="group">
+                                <i class="fas fa-users"></i>
+                                <input type="text" name="group" placeholder="Group">
+                            </div>
+                            <input type="submit" name="submit" value="Submit">
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="addressbook">
+            <div class="container">
+                <div class = "book_header">
+                   <div>
+                       Name
+                   </div> 
+                   <div class="email_field">
+                       Email Address
+                   </div> 
+                   <div>
+                       Phone Number
+                   </div> 
+                   <div>
+                       Group
+                   </div> 
+                </div>
+                <div class="book_body">
+                    <div class="entry">
+                        <div class="name_field">
+                            Ollie Smells
+                        </div> 
+                        <div class="email_field">
+                            <a href="mailto:">olliesmells@gmail.com</a>
+                        </div> 
+                        <div>
+                            07712345678
+                        </div> 
+                        <div>
+                            Smelly Person
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </body>
