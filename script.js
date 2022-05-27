@@ -95,18 +95,6 @@ addStoredContacts('contactArray');
 formSubmit.addEventListener('click', addContact);
 
 
-/*Form Validation*/
-
-
-/*Search*/
-
-function findMatches(wordToMatch, contactArray) {
-  return contactArray.filter(contact => {
-
-    const regex = new RegExp(wordToMatch, 'gi');
-    return contact.name.match(regex) || contact.group.match(regex);
-  })
-}
 
 
 })
