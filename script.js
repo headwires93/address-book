@@ -20,16 +20,17 @@ modalTrigger.addEventListener('click', () => {
 
 
 
-/*Contact Constructor*/
+/*Adding and Loading Contacts*/
 const formSubmit = document.querySelector("#submitbtn");
 const formName = document.querySelector("#name input");
 const formEmail = document.querySelector("#email input");
 const formPhone = document.querySelector("#phone input");
 const formGroup = document.querySelector("#group input");
 const book = document.querySelector(".book_body");
+const contactArray = [];
 
 
-
+/*Contact Object Constructor*/
 function Contact(name, email, phone, group) {
   this.name = name;
   this.email = email;
@@ -37,18 +38,32 @@ function Contact(name, email, phone, group) {
   this.group = group;
 }
 
+/*Add a new contact to the book form the form*/
 function addContact() {
   const name = formName.value;
   const email = formEmail.value;
   const phone = formPhone.value;
   const group = formGroup.value;
-  newContact = new Contact(name, email, phone, group);
-  addToBook(newContact);
   clearForm();
   popupModal.classList.remove('is--visible');
   bodyBlackout.classList.remove('is-blacked-out');
+  newContact = new Contact(name, email, phone, group);
+  contactArray.push(newContact);
+  window.localStorage.setItem('contactArray', JSON.stringify(contactArray));
+  addToBook(newContact);
+  return contactArray;
 }
 
+/*Load existing contacts form local storage*/
+function addStoredContacts(contactArr) {
+  const contacts = JSON.parse(window.localStorage.getItem(contactArr));
+  if (contacts !== null) {
+    contacts.forEach(contact => addToBook(contact));
+  }
+}
+
+
+/*Helper function to add contacts to the book*/
 function addToBook(contactObj) {
   var node = document.createElement("DIV"); 
   node.classList.add("entry");
@@ -67,6 +82,7 @@ function addToBook(contactObj) {
   book.appendChild(node);
 }
 
+/*Clears form*/
 function clearForm() {
   formName.value = "";
   formEmail.value = "";
@@ -74,7 +90,24 @@ function clearForm() {
   formGroup.value = "";
 }
 
-formSubmit.addEventListener('click', addContact)
+addStoredContacts('contactArray');
+
+formSubmit.addEventListener('click', addContact);
+
+
+/*Form Validation*/
+
+
+/*Search*/
+
+function findMatches(wordToMatch, contactArray) {
+  return contactArray.filter(contact => {
+
+    const regex = new RegExp(wordToMatch, 'gi');
+    return contact.name.match(regex) || contact.group.match(regex);
+  })
+}
+
 
 })
 
