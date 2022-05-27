@@ -4,4 +4,4 @@
 
 ![Address Book](project_screenshot_one.jpg)
 
-![Address book with add contact form open](project_screenshot_two.jpg)
+![Address book with add contact form open](project-screenshot-two.jpg)
